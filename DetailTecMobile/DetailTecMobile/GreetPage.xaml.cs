@@ -50,7 +50,7 @@ namespace DetailTecMobile
             {
                 //HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Placeholder = "Username",
+                Placeholder = "Usuario",
                 MaxLength = 20,
                 ClearButtonVisibility = ClearButtonVisibility.WhileEditing
                  
@@ -60,7 +60,7 @@ namespace DetailTecMobile
             {
               //  HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Placeholder = "Password",
+                Placeholder = "Contraseña",
                 IsPassword = true,
                 MaxLength = 20,
                 ClearButtonVisibility = ClearButtonVisibility.WhileEditing
@@ -70,7 +70,7 @@ namespace DetailTecMobile
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Log In",
+                Text = "Iniciar Sesión",
             
             };
             logInButton.Clicked += LogInButton_Clicked;

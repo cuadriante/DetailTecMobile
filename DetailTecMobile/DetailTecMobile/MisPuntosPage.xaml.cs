@@ -13,20 +13,38 @@ namespace DetailTecMobile
     public partial class MisPuntosPage : ContentPage
     {
 
+        Label puntosTitleLabel;
         Label puntosActualesLabel;
         Label puntosUtilizadosLabel;
+        Label numeroPuntosActualesLabel;
+        Label numeroPuntosUtilizadosLabel;
         Button backButton;
+
+        string numeroPuntosUtilizados;
+        string numeroPuntosActuales;
 
         StackLayout layout = new StackLayout();
         public MisPuntosPage()
         {
             InitializeComponent();
 
+            numeroPuntosActuales = "1250";
+            numeroPuntosUtilizados = "430";
+
+            puntosTitleLabel = new Label()
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Text = "Mis Puntos",
+                FontSize = 48
+
+            };
             puntosActualesLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Puntos actuales: ",
+                FontSize = 22,
+                Text = "Puntos disponibles"
 
             };
 
@@ -34,7 +52,26 @@ namespace DetailTecMobile
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Puntos utilizadors: ",
+                FontSize = 22,
+                Text = "Puntos utilizados"
+
+            };
+
+            numeroPuntosActualesLabel = new Label
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 50,
+                Text = numeroPuntosActuales
+
+            };
+
+            numeroPuntosUtilizadosLabel = new Label
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 50,
+                Text = numeroPuntosUtilizados
 
             };
 
@@ -42,14 +79,17 @@ namespace DetailTecMobile
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Back",
+                Text = "Atras",
 
             };
             backButton.Clicked += BackButton_Clicked;
 
 
+            layout.Children.Add(puntosTitleLabel);
             layout.Children.Add(puntosActualesLabel);
+            layout.Children.Add(numeroPuntosActualesLabel);
             layout.Children.Add(puntosUtilizadosLabel);
+            layout.Children.Add(numeroPuntosUtilizadosLabel);
             layout.Children.Add(backButton);
             Content = layout;
 

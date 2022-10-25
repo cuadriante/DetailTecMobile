@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DetailTecMobile.Models
 {
-    internal class Cliente
+    public class Cliente
     {
         public string id { get; set; }
         public string nombre { get; set; }

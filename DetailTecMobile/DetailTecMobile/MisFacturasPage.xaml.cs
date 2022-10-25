@@ -16,22 +16,33 @@ namespace DetailTecMobile
     {
         Button backButton;
 
+        Label facturasTitleLabel;
+
         StackLayout layout = new StackLayout();
         public MisFacturasPage()
         {
             InitializeComponent();
 
-          
+            facturasTitleLabel = new Label()
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Text = "Mis Facturas",
+                FontSize = 48
+
+            };
+
 
             backButton = new Button
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Back",
+                Text = "Atras",
 
             };
             backButton.Clicked += BackButton_Clicked;
 
+            layout.Children.Add(facturasTitleLabel);
             layout.Children.Add(backButton);
             Content = layout;
 

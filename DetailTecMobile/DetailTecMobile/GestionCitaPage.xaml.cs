@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace DetailTecMobile
@@ -12,99 +14,42 @@ namespace DetailTecMobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GestionCitaPage : ContentPage
     {
-        Button insertarCitaButton;
-        Button modificarCitaButton;
-        Button eliminarCitaButton;
-        Button verCitasButton;
-        Button backButton;
 
-        StackLayout layout = new StackLayout();
+        ObservableCollection<Models.Cita> citas;
 
         public GestionCitaPage()
         {
             InitializeComponent();
 
-            insertarCitaButton = new Button
+            citas = new ObservableCollection<Models.Cita>
             {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Insertar Cita",
+                new Models.Cita{placaVehiculo = "JAM-123", tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
+                new Models.Cita {placaVehiculo = "ADR-555", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
+                new Models.Cita{placaVehiculo = "UWU-123", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares"},
+                new Models.Cita{placaVehiculo = "76456745", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
 
             };
-            insertarCitaButton.Clicked += InsertarCitaButton_Clicked;
 
+            citaCollectionView.ItemsSource = citas;
 
-            modificarCitaButton = new Button
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Modificar Cita",
-
-            };
-            modificarCitaButton.Clicked += ModificarCitaButton_Clicked;
-
-
-            eliminarCitaButton = new Button
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Eliminar Cita",
-
-            };
-            eliminarCitaButton.Clicked += EliminarCitaButton_Clicked;
-
-
-            verCitasButton = new Button
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Visualizar Citas",
-
-            };
-            verCitasButton.Clicked += VerCitasButton_Clicked;
-
-
-            backButton = new Button
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Back",
-
-            };
-            backButton.Clicked += BackButton_Clicked;
-
-
-            layout.Children.Add(insertarCitaButton);
-            layout.Children.Add(modificarCitaButton);
-            layout.Children.Add(eliminarCitaButton);
-            layout.Children.Add(verCitasButton);
-            layout.Children.Add(backButton);
-            Content = layout;
+ 
         }
+
+
+
+        //   protected override async void OnAppearing()
+        /// <summary>
+        /// /
+        /// </summary>
+        // Retrieve all the notes from the database, and set them as the
+        // data source for the CollectionView.
+        //       CollectionView collectionView = new CollectionView();
+        //     collectionView.ItemsSource = await App.Database.Listar();
+        //   }
 
         private async void BackButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MenuPage());
+            {
+                await Navigation.PushAsync(new MenuPage());
+            }
         }
-
-        private async void InsertarCitaButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new GestionCitaPage());
-        }
-
-        private async void ModificarCitaButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new GestionCitaPage());
-        }
-
-        private async void EliminarCitaButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MisFacturasPage());
-        }
-
-        private async void VerCitasButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MisPuntosPage());
-        }
-    }
 }

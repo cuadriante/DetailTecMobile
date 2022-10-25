@@ -28,7 +28,7 @@ namespace DetailTecMobile
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Gestion Clientes",
+                Text = "Mi Perfil",
 
             };
             gestionClientesButton.Clicked += GestionClientesButton_Clicked;
@@ -38,7 +38,7 @@ namespace DetailTecMobile
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Gestion Citas",
+                Text = "Mis Citas",
 
             };
             gestionCitasButton.Clicked += GestionCitasButton_Clicked;
@@ -67,7 +67,7 @@ namespace DetailTecMobile
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Back",
+                Text = "Atras",
 
             };
             backButton.Clicked += BackButton_Clicked;
