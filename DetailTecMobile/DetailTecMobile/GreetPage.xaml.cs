@@ -84,17 +84,17 @@ namespace DetailTecMobile
 
         }
 
-        private void LogInButton_Clicked(object sender, EventArgs e)
+        private async void LogInButton_Clicked(object sender, EventArgs e)
         {
             user = userEntry.Text;
             password = passwordEntry.Text;
             bool valid = true; //bindear con base de datos 
             if (valid)
             {
-                DisplayAlert("Log In Successful!", "yei.", "OK");
+                await Navigation.PushAsync(new MenuPage());
             } else
             {
-                DisplayAlert("Log In Unsuccessful", "User or password incorrect.", "OK");
+                await DisplayAlert("Log In Unsuccessful", "User or password incorrect.", "OK");
             };
                 
         }
