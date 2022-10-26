@@ -19,8 +19,11 @@ namespace DetailTecMobile
         Label facturasTitleLabel;
 
         StackLayout layout = new StackLayout();
-        public MisFacturasPage()
+
+        string currentUser;
+        public MisFacturasPage(string user)
         {
+            currentUser = user; 
             InitializeComponent();
 
             facturasTitleLabel = new Label()
@@ -50,7 +53,7 @@ namespace DetailTecMobile
 
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage());
+            await Navigation.PushAsync(new MenuPage(currentUser));
         }
     }
 }

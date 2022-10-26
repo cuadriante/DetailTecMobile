@@ -17,24 +17,42 @@ namespace DetailTecMobile
 
         ObservableCollection<Models.Cita> citas;
 
-        public GestionCitaPage()
+        string currentUser;
+
+        public GestionCitaPage(string user)
         {
+            currentUser = user;
             InitializeComponent();
 
-            citas = new ObservableCollection<Models.Cita>
-            {
-                new Models.Cita{placaVehiculo = "JAM-123", tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
-                new Models.Cita {placaVehiculo = "ADR-555", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
-                new Models.Cita{placaVehiculo = "UWU-123", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares"},
-                new Models.Cita{placaVehiculo = "76456745", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
+            // citas = new ObservableCollection<Models.Cita>
+            // {
+            //  new Models.Cita{placaVehiculo = "JAM-123", tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
+            //  new Models.Cita {placaVehiculo = "ADR-555", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
+            //  new Models.Cita{placaVehiculo = "UWU-123", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares"},
+            //  new Models.Cita{placaVehiculo = "76456745", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
 
-            };
+            // };
 
-            citaCollectionView.ItemsSource = citas;
+            //citaCollectionView.ItemsSource = citas;
 
+            InsertarCita();
+
+            
  
         }
 
+        protected override async void OnAppearing()
+        {
+            try
+            {
+                base.OnAppearing();
+                citaCollectionView.ItemsSource = await App.Database.Listar();
+            }
+            catch
+            {
+
+            }
+        }
 
 
         //   protected override async void OnAppearing()
@@ -49,7 +67,31 @@ namespace DetailTecMobile
 
         private async void BackButton_Clicked(object sender, EventArgs e)
             {
-                await Navigation.PushAsync(new MenuPage());
+                await Navigation.PushAsync(new MenuPage(currentUser));
             }
+
+        private void citaCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var itemSelected = e.CurrentSelection[0] as Models.Cita;
+            if (itemSelected != null)
+                DisplayAlert("DETALLES DE CITA", $" Vehiculo: {itemSelected.placaVehiculo} \n" +
+                    $" Fecha: {itemSelected.hora} \n Tipo Lavado {itemSelected.tipoLavado} \n Medio de Pago: {itemSelected.medioPago} \n " +
+                    $"Sucursal: {itemSelected.IDSucursal}", "Ok");
+        }
+
+        async void InsertarCita()
+        {
+            await App.Database.Insertar(new Models.Cita
+            {
+                id = "1",
+                cedulaCliente = "118460116",
+                placaVehiculo = "JAM-123",
+                IDSucursal = 1,
+                tipoLavado = 1,
+                fecha = DateTime.Now,
+                hora = DateTime.Now,
+                medioPago = "dolares"
+            });
+        }
         }
 }

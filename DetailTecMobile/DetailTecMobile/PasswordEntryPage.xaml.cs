@@ -24,8 +24,11 @@ namespace DetailTecMobile
         Label passwordTitleLabel;
 
         StackLayout layout = new StackLayout();
-        public PasswordEntryPage()
+
+        string currentUser;
+        public PasswordEntryPage(string user)
         {
+            currentUser = user; 
             InitializeComponent();
 
             passwordTitleLabel = new Label()
@@ -86,13 +89,13 @@ namespace DetailTecMobile
 
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GestionClientePage());
+            await Navigation.PushAsync(new GestionClientePage(currentUser));
         }
 
         private async void ConfirmPasswordButton_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("CAMMBIO DE CONTRASEÑA EXITOSO.", "Utilice su nueva cotraseña para iniciar sesión.", "OK");
-            await Navigation.PushAsync(new GestionClientePage());
+            await DisplayAlert("CAMBIO DE CONTRASEÑA EXITOSO.", "Utilice su nueva cotraseña para iniciar sesión.", "OK");
+            await Navigation.PushAsync(new GestionClientePage(currentUser));
         }
     }
 }

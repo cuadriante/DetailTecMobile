@@ -9,10 +9,10 @@ namespace DetailTecMobile
     public partial class App : Application
     {
 
-        static SQLiteHelper database;
+        private static SQLDBHelper database;
 
         // Create the database connection as a singleton.
-        public static SQLiteHelper Database
+        public static SQLDBHelper Database
         {
             get
             {
@@ -20,7 +20,7 @@ namespace DetailTecMobile
                 {
                     try
                     {
-                        database = new SQLiteHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Clientes.db3"));
+                        database = new SQLDBHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DetailTECMobile.db3"));
                     }
                     catch (Exception)
                     {

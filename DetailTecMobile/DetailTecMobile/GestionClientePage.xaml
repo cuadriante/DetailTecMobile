@@ -4,9 +4,33 @@
              x:Class="DetailTecMobile.GestionClientePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label
+                HorizontalOptions="Center"
+                VerticalOptions = "CenterAndExpand"
+                Text = "Mi Perfil"
+                FontSize ="48"/>
+            <Label Text="{Binding nombre}"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding apellido1}"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding apellido2}"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding email}"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+            <Button 
+                HorizontalOptions="Center"
+                VerticalOptions = "CenterAndExpand"
+                Text = "Atras"
+                Clicked="BackButton_Clicked"
+                />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

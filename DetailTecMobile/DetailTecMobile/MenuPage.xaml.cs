@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DetailTecMobile
 {
@@ -18,11 +19,24 @@ namespace DetailTecMobile
         Button misFacturasButton;
         Button misPuntosButton;
         Button backButton;
+        Label usernameLabel;
 
         StackLayout layout = new StackLayout();
-        public MenuPage()
+
+        string currentUser;
+
+
+        public MenuPage(string user)
         {
+            currentUser = user;
             InitializeComponent();
+
+            usernameLabel = new Label
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Text = user,
+            };
 
             gestionClientesButton = new Button
             {
@@ -72,7 +86,7 @@ namespace DetailTecMobile
             };
             backButton.Clicked += BackButton_Clicked;
 
-
+            layout.Children.Add(usernameLabel);
             layout.Children.Add(gestionClientesButton);
             layout.Children.Add(gestionCitasButton);
             layout.Children.Add(misFacturasButton);
@@ -88,22 +102,22 @@ namespace DetailTecMobile
 
         private async void GestionClientesButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GestionClientePage());
+            await Navigation.PushAsync(new GestionClientePage(currentUser));
         }
 
         private async void GestionCitasButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GestionCitaPage());
+            await Navigation.PushAsync(new GestionCitaPage(currentUser));
         }
 
         private async void MisFacturasButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MisFacturasPage());
+            await Navigation.PushAsync(new MisFacturasPage(currentUser));
         }
 
         private async void MisPuntosButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MisPuntosPage());
+            await Navigation.PushAsync(new MisPuntosPage(currentUser));
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DetailTecMobile.Models
 {
-    internal class Cita
+    public class Cita
     {
         public string id { get; set; }
         public string cedulaCliente { get; set; }

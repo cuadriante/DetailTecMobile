@@ -14,138 +14,44 @@ namespace DetailTecMobile
     public partial class GestionClientePage : ContentPage
     {
 
-        Label clienteTitleLabel;
-        Button cambiarPasswordButton;
-        Button backButton;
 
-        Label idLabel;
-        Label nombreLabel;
-        Label apellido1Label;
-        Label apellido2Label;
-        Label emailLabel;
-
-        string id;
-        string nombre;
-        string apellido1;
-        string apellido2;
-        string email;
-     
+   
         StackLayout layout = new StackLayout();
 
-        public GestionClientePage()
+        string currentUser;
+
+        public GestionClientePage(string user)
         {
             InitializeComponent();
 
-            string id = "118460116";
-            string nombre = "adri";
-            string apellido1 = "calde";
-            string apellido2 = "ron";
-            string email = "adri.com";
+            currentUser = user;
 
-            clienteTitleLabel = new Label()
+            List<Cliente> clientes = new List<Cliente>
             {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Mi perfil",
-                FontSize = 48
-
-            };
-
-            idLabel = new Label()
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "ID: " + id,
-                FontSize = 22
-
-            };
-
-            nombreLabel = new Label()
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "NOMBRE: " + nombre,
-                FontSize = 22
-
-            };
-
-            apellido1Label = new Label()
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "PRIMER APELLIDO: " + apellido1,
-                FontSize = 22
-
-            };
-
-            apellido2Label = new Label()
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "SEGUNDO APELLIDO: " + apellido2,
-                FontSize = 22
-
-            };
-
-            emailLabel = new Label()
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "EMAIL: " + email,
-                FontSize = 22
-
+                new Cliente { id = "118460116", nombre = "adri", apellido1 = "calde", apellido2 = "ron", email = "adri@uwu.owo" },
+              
             };
 
 
-            cambiarPasswordButton = new Button
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Cambiar Contraseña",
-
-            };
-            cambiarPasswordButton.Clicked += CambiarPasswordButton_Clicked;
-
-
-            backButton = new Button
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Atras",
-
-            };
-            backButton.Clicked += BackButton_Clicked;
-
-            layout.Children.Add(clienteTitleLabel);
-            layout.Children.Add(idLabel);
-            layout.Children.Add(nombreLabel);
-            layout.Children.Add(apellido1Label);
-            layout.Children.Add(apellido2Label);
-            layout.Children.Add(emailLabel);
-            layout.Children.Add(cambiarPasswordButton);
-            layout.Children.Add(backButton);
-            Content = layout;
         }
 
-     //   protected override async void OnAppearing()
-      /// <summary>
-      /// /
-      /// </summary>
-            // Retrieve all the notes from the database, and set them as the
-            // data source for the CollectionView.
-     //       CollectionView collectionView = new CollectionView();
-       //     collectionView.ItemsSource = await App.Database.Listar();
-     //   }
+
 
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage());
+            await Navigation.PushAsync(new MenuPage(currentUser));
         }
 
 
         private async void CambiarPasswordButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PasswordEntryPage());
+            await Navigation.PushAsync(new PasswordEntryPage(currentUser));
+        }
+
+        async void clienteListView_ClienteSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var cliente = e.SelectedItem as Cliente;
+            await Navigation.PushAsync(new MenuPage(cliente.id));
         }
 
     }

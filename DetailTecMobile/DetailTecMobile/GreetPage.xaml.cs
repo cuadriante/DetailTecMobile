@@ -91,7 +91,7 @@ namespace DetailTecMobile
             bool valid = true; //bindear con base de datos 
             if (valid)
             {
-                await Navigation.PushAsync(new MenuPage());
+                await Navigation.PushAsync(new MenuPage(user));
             } else
             {
                 await DisplayAlert("Log In Unsuccessful", "User or password incorrect.", "OK");

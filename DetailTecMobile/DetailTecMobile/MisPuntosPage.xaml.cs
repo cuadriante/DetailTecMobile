@@ -22,10 +22,12 @@ namespace DetailTecMobile
 
         string numeroPuntosUtilizados;
         string numeroPuntosActuales;
+        string currentUser;
 
         StackLayout layout = new StackLayout();
-        public MisPuntosPage()
+        public MisPuntosPage(string user)
         {
+            currentUser = user; 
             InitializeComponent();
 
             numeroPuntosActuales = "1250";
@@ -97,7 +99,7 @@ namespace DetailTecMobile
 
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage());
+            await Navigation.PushAsync(new MenuPage(currentUser));
         }
     }
 }
