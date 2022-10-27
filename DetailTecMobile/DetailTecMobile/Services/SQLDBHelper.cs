@@ -1,19 +1,21 @@
-﻿using SQLite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using SQLite;
+using DetailTecMobile.Models;
 
 namespace DetailTecMobile.Services
 {
     public class SQLDBHelper
     {
-        private readonly SQLiteAsyncConnection db;
+        SQLiteAsyncConnection db;
 
         public SQLDBHelper(string dbPath)
         {
             db = new SQLiteAsyncConnection(dbPath);
-            db.CreateTableAsync<Models.Cita>();
+            db.CreateTableAsync<Cliente>();
+            db.CreateTableAsync<Cita>();
         }
 
         public Task<Models.Cita> Obtener(string d)

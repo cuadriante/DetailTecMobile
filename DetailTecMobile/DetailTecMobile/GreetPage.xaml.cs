@@ -3,11 +3,15 @@ using DetailTecMobile.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace DetailTecMobile
 {
@@ -88,7 +92,38 @@ namespace DetailTecMobile
         {
             user = userEntry.Text;
             password = passwordEntry.Text;
+
+            Login login = new Login
+            {
+                email = userEntry.Text,
+                password = passwordEntry.Text,
+                tipoUsuario = "Cliente"
+
+            };
+
+            Uri requestUri = new Uri("http://10.0.2.2:5064/login/verify");
+
+            var client = new HttpClient();
+            var json = JsonConvert.SerializeObject(login);
+            var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(requestUri, contentJson);
+
+
             bool valid = true; //bindear con base de datos 
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine(data);
+                valid = true;
+            }
+            else
+            {
+
+                valid = false;
+            }
+
+            
             if (valid)
             {
                 await Navigation.PushAsync(new MenuPage(user));
