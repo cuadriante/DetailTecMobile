@@ -41,7 +41,7 @@ namespace DetailTecMobile
         TimePicker timePicker;
 
         string currentParametro;
-        public ModificarCitaPage(string user)
+        public ModificarCitaPage(string user, Models.Cita citaActual)
         {
             currentUser = user;
             InitializeComponent();
@@ -71,9 +71,7 @@ namespace DetailTecMobile
                 //  HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Placeholder = "Placa Vehículo",
-                IsPassword = true,
                 MaxLength = 20,
-                ClearButtonVisibility = ClearButtonVisibility.WhileEditing
             };
 
             Picker modoDePagoPicker = new Picker
@@ -111,11 +109,23 @@ namespace DetailTecMobile
             }
 
 
+            if (citaActual != null)
+            {
+                nuevaCitaTitleLabel.Text = "Modificar Cita";
+                placaVehiculoEntry.Text = citaActual.placaVehiculo;
+                modoDePagoPicker.Title = citaActual.medioPago;
+
+            }
+
+
             backButton = new Button
             {
+                HeightRequest = 50,
+                WidthRequest = 100,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Atras",
+                BackgroundColor = Color.DeepPink
 
             };
             backButton.Clicked += BackButton_Clicked;
@@ -157,6 +167,7 @@ namespace DetailTecMobile
 
             };
 
+            layout.BackgroundColor = Color.Azure;
             layout.Children.Add(nuevaCitaTitleLabel);
             layout.Children.Add(placaVehiculoEntry);
             layout.Children.Add(modoDePagoPicker);

@@ -38,13 +38,17 @@ namespace DetailTecMobile
 
             backButton = new Button
             {
+                HeightRequest = 50,
+                WidthRequest = 100,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Atras",
+                BackgroundColor = Color.DeepPink
 
             };
             backButton.Clicked += BackButton_Clicked;
 
+            layout.BackgroundColor = Color.Azure;
             layout.Children.Add(facturasTitleLabel);
             layout.Children.Add(backButton);
             Content = layout;

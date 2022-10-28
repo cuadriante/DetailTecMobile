@@ -15,5 +15,7 @@ namespace DetailTecMobile.Models
        public DateTime hora { get; set; }
        public string medioPago { get; set; }
        public List<string> idEmpleados { get; set; }
+
+       public string estado { get; set; }
     }
 }

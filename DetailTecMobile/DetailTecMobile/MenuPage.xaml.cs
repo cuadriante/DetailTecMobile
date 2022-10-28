@@ -96,10 +96,12 @@ namespace DetailTecMobile
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Atras",
+                BackgroundColor = Color.DeepPink
 
             };
             backButton.Clicked += BackButton_Clicked;
 
+            layout.BackgroundColor = Color.Azure;
             layout.Children.Add(usernameLabel);
             layout.Children.Add(gestionClientesButton);
             layout.Children.Add(gestionCitasButton);
