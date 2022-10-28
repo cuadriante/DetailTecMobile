@@ -26,19 +26,23 @@ namespace DetailTecMobile
         StackLayout layout = new StackLayout();
 
         string currentUser;
-        public PasswordEntryPage(string user)
+        string currentParametro;
+        public PasswordEntryPage(string user, string parametro)
         {
-            currentUser = user; 
+            currentUser = user;
+            currentParametro = parametro;
             InitializeComponent();
 
             passwordTitleLabel = new Label()
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Cambiar contraseña",
+                Text = $"Cambiar {currentParametro}",
                 FontSize = 48
 
             };
+
+            layout.Children.Add(passwordTitleLabel);
 
             backButton = new Button
             {
@@ -49,26 +53,31 @@ namespace DetailTecMobile
             };
             backButton.Clicked += BackButton_Clicked;
 
-            oldPasswordEntry = new Entry()
+            if (currentParametro == "Contraseña")
+            {
+                oldPasswordEntry = new Entry()
+                {
+                    //  HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    Placeholder = $"{currentParametro} actual",
+                    IsPassword = true,
+                    MaxLength = 20,
+                    ClearButtonVisibility = ClearButtonVisibility.WhileEditing
+                };
+
+                layout.Children.Add(oldPasswordEntry);
+            }
+
+           passwordEntry = new Entry()
             {
                 //  HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Placeholder = "Contraseña actual",
+                Placeholder = $"Nuevo/a {currentParametro}",
                 IsPassword = true,
                 MaxLength = 20,
                 ClearButtonVisibility = ClearButtonVisibility.WhileEditing
             };
 
-
-            passwordEntry = new Entry()
-            {
-                //  HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Placeholder = "Contraseña nueva",
-                IsPassword = true,
-                MaxLength = 20,
-                ClearButtonVisibility = ClearButtonVisibility.WhileEditing
-            };
 
             confirmPasswordButton = new Button
             {
@@ -79,8 +88,9 @@ namespace DetailTecMobile
             };
             confirmPasswordButton.Clicked += ConfirmPasswordButton_Clicked;
 
-            layout.Children.Add(passwordTitleLabel);
-            layout.Children.Add(oldPasswordEntry);
+            
+
+            
             layout.Children.Add(passwordEntry);
             layout.Children.Add(confirmPasswordButton);
             layout.Children.Add(backButton);
@@ -94,7 +104,7 @@ namespace DetailTecMobile
 
         private async void ConfirmPasswordButton_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("CAMBIO DE CONTRASEÑA EXITOSO.", "Utilice su nueva cotraseña para iniciar sesión.", "OK");
+            await DisplayAlert("AVISO.", $"Cambio de {currentParametro} exitoso.", "OK");
             await Navigation.PushAsync(new GestionClientePage(currentUser));
         }
     }
