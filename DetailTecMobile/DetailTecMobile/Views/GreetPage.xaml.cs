@@ -37,6 +37,8 @@ namespace DetailTecMobile
         {
             InitializeComponent();
 
+            //var image = new Image { Source = "Resources/logo.png" };
+
             titleLabel = new Label()
             {
                 HorizontalOptions = LayoutOptions.Center,
@@ -68,13 +70,17 @@ namespace DetailTecMobile
 
             logInButton = new Button
             {
+                HeightRequest = 50,
+                WidthRequest = 100,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Log In",
             
             };
             logInButton.Clicked += LogInButton_Clicked;
-            
+
+            layout.BackgroundColor = Color.Azure;
+            //layout.Children.Add(image);
             layout.Children.Add(titleLabel);    
             layout.Children.Add(userEntry);
             layout.Children.Add(passwordEntry);

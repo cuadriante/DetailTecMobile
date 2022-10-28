@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DetailTecMobile.GestionCitaPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Azure">
+            <Label
+                HorizontalOptions="Center"
+                VerticalOptions = "CenterAndExpand"
+                Text = "Mis citas"
+                FontSize ="48"/>
+            <CollectionView x:Name="citaCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="citaCollectionView_SelectionChanged"
+                            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1"
+                                   Text="{Binding placaVehiculo}"
+                                   FontAttributes="Bold"
+                                   FontSize="18"/>
+                            
+                            <Label Grid.Column="2"
+                                   Text= "{Binding hora}"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Column="3"
+                                   Text="{Binding medioPago}"
+                                   FontAttributes="Italic"/>
+                            <Label Grid.Column="4"
+                                   Text= "{Binding estado}"
+                                   FontAttributes="Bold"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button 
+                HeightRequest = "50"
+                WidthRequest = "100"
+                HorizontalOptions="Center"
+                VerticalOptions = "CenterAndExpand"
+                Text = "Agendar"
+                Clicked="AgendarButton_Clicked"
+                />
+            <Button 
+                HeightRequest = "50"
+                WidthRequest = "100"
+                HorizontalOptions="Center"
+                VerticalOptions = "CenterAndExpand"
+                Text = "Atras"
+                BackgroundColor="DeepPink"
+                Clicked="BackButton_Clicked"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
