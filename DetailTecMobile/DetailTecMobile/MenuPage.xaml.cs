@@ -21,6 +21,9 @@ namespace DetailTecMobile
         Button backButton;
         Label usernameLabel;
 
+        int buttonHeight = 50;
+        int buttonWidth = 150;
+
         StackLayout layout = new StackLayout();
 
         string currentUser;
@@ -35,11 +38,14 @@ namespace DetailTecMobile
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = user,
+                FontSize = 48,
+                Text = $"Bienvenido, \n {user}!",
             };
 
             gestionClientesButton = new Button
             {
+                HeightRequest = buttonHeight,
+                WidthRequest = buttonWidth,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Mi Perfil",
@@ -50,6 +56,8 @@ namespace DetailTecMobile
 
             gestionCitasButton = new Button
             {
+                HeightRequest = buttonHeight,
+                WidthRequest = buttonWidth,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Mis Citas",
@@ -60,6 +68,8 @@ namespace DetailTecMobile
 
             misFacturasButton = new Button
             {
+                HeightRequest = buttonHeight,
+                WidthRequest = buttonWidth,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Mis Facturas",
@@ -69,6 +79,8 @@ namespace DetailTecMobile
 
             misPuntosButton = new Button
             {
+                HeightRequest = buttonHeight,
+                WidthRequest = buttonWidth,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Mis Puntos",
@@ -79,6 +91,8 @@ namespace DetailTecMobile
 
             backButton = new Button
             {
+                HeightRequest = buttonHeight,
+                WidthRequest = buttonWidth,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Atras",

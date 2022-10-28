@@ -45,6 +45,12 @@
             <Button 
                 HorizontalOptions="Center"
                 VerticalOptions = "CenterAndExpand"
+                Text = "Agendar"
+                Clicked="AgendarButton_Clicked"
+                />
+            <Button 
+                HorizontalOptions="Center"
+                VerticalOptions = "CenterAndExpand"
                 Text = "Atras"
                 Clicked="BackButton_Clicked"
                 />
