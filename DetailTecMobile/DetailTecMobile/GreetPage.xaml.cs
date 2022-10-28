@@ -37,6 +37,8 @@ namespace DetailTecMobile
         private string password;
 
 
+     // Descripción: Inicializa la página para inicio de sesión a la página web
+
         public GreetPage()
         {
             InitializeComponent();
@@ -93,6 +95,8 @@ namespace DetailTecMobile
 
 
         }
+
+        // Descripción: Al presionar el botón, verifica las credenciales del usuario con la base de datos 
 
         private async void LogInButton_Clicked(object sender, EventArgs e)
         {

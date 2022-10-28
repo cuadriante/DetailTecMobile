@@ -12,6 +12,8 @@ using Xamarin.Forms.Xaml;
 namespace DetailTecMobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    // Descripción: Visualización de citas de usuario actual, posibilidad de agregar o modificar existentes. 
     public partial class GestionCitaPage : ContentPage
     {
 
@@ -19,6 +21,8 @@ namespace DetailTecMobile
 
         string currentUser;
 
+
+        // Descripción: Inicialización de la página y obtención de citas del usuario con base en la base de datos
         public GestionCitaPage(string user)
         {
             currentUser = user;
@@ -65,16 +69,20 @@ namespace DetailTecMobile
         //     collectionView.ItemsSource = await App.Database.Listar();
         //   }
 
+
+        // Descripción: Lleva a página anterior
         private async void BackButton_Clicked(object sender, EventArgs e)
             {
                 await Navigation.PushAsync(new MenuPage(currentUser));
             }
 
+        // Descripción: Lleva a página para crear nueva cita al presionar botón
         private async void AgendarButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ModificarCitaPage(currentUser, null));
         }
 
+        // Descripción: Detalla cita seleccionada y posibilidad de modificar sus datos
         private async void citaCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var itemSelected = e.CurrentSelection[0] as Models.Cita;

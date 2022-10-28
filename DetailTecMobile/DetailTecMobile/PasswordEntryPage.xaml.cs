@@ -10,6 +10,8 @@ using Xamarin.Forms.Xaml;
 namespace DetailTecMobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    // Descripción: Página para la modificación de un dato especifico de un cliente según el usuario seleccionado
     public partial class PasswordEntryPage : ContentPage
     {
 
@@ -27,6 +29,8 @@ namespace DetailTecMobile
 
         string currentUser;
         string currentParametro;
+
+        // Descripción: Inicialización de página para la modificación de un parámetro de un usuario en la base de datos
         public PasswordEntryPage(string user, string parametro)
         {
             currentUser = user;
@@ -103,12 +107,16 @@ namespace DetailTecMobile
             Content = layout;
         }
 
+
+        // Descripción: Permite viajar a la página anterior
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
 
             await Navigation.PushAsync(new GestionClientePage(currentUser));
         }
 
+
+        // Descripción: Guarda los cambios al parámetro en la base de datos. 
         private async void ConfirmPasswordButton_Clicked(object sender, EventArgs e)
         {
             if (passwordEntry.Text != null)

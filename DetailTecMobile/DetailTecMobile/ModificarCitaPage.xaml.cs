@@ -15,6 +15,8 @@ using TimePicker = Xamarin.Forms.TimePicker;
 namespace DetailTecMobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    // Descripción: Página para la posibilidad de modificación de datos de cita agendada previamente, datos obtenidos de la base de datos.
     public partial class ModificarCitaPage : ContentPage
     {
 
@@ -41,6 +43,8 @@ namespace DetailTecMobile
         TimePicker timePicker;
 
         string currentParametro;
+
+        // Descripción: Inicialización de página para visualización de puntos segpun el usuario seleccionado.
         public ModificarCitaPage(string user, Models.Cita citaActual)
         {
             currentUser = user;
@@ -186,6 +190,7 @@ namespace DetailTecMobile
             Content = layout;
         }
 
+        // Descripción: Permite acceder a la página anterior
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
             bool back = await DisplayAlert("AVISO", "Se perderán los datos modificados.", "Atras", "OK");
@@ -196,6 +201,7 @@ namespace DetailTecMobile
            
         }
 
+        // Descripción: Permite guardar los cambios modificados en la base de datos. 
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
             // insertar a la base

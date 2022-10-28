@@ -10,6 +10,8 @@ using Xamarin.Forms.Xaml;
 namespace DetailTecMobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    // Descripción: Visualización de puntos del usuario seleccionado con base en la base de datos 
     public partial class MisPuntosPage : ContentPage
     {
 
@@ -25,6 +27,8 @@ namespace DetailTecMobile
         string currentUser;
 
         StackLayout layout = new StackLayout();
+
+        // Descripción: Inicialización de página para visualización de puntos de usuario seleccionado con base en los datos de la base de datos
         public MisPuntosPage(string user)
         {
             currentUser = user; 
@@ -100,6 +104,8 @@ namespace DetailTecMobile
 
         }
 
+
+        // Descripción: Lleva a la página anterior
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MenuPage(currentUser));
