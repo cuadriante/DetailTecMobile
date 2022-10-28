@@ -15,33 +15,105 @@ namespace DetailTecMobile.Services
         {
             db = new SQLiteAsyncConnection(dbPath);
             db.CreateTableAsync<Cliente>();
+            db.CreateTableAsync<Sucursal>();
+            db.CreateTableAsync<Lavado>();
+            db.CreateTableAsync<Trabajador>();
             db.CreateTableAsync<Cita>();
         }
 
-        public Task<Models.Cita> Obtener(string d)
+        public Task<Models.Cita> ObtenerCita(int d)
         {
-            return db.Table<Models.Cita>()
-                .Where(i => i.id == d)
-                            .FirstOrDefaultAsync();
+            return db.Table<Cita>().Where(i => i.id == d).FirstOrDefaultAsync();
         }
-        public Task<int> Insertar(Models.Cita cita)
+        public Task<Cliente> ObtenerC(string d)
+        {
+            return db.Table<Cliente>().Where(i => i.id == d).FirstOrDefaultAsync();
+        }
+        public Task<Sucursal> ObtenerS(int d)
+        {
+            return db.Table<Sucursal>().Where(i => i.id == d).FirstOrDefaultAsync();
+        }
+        public Task<Trabajador> ObtenerT(string d)
+        {
+            return db.Table<Trabajador>().Where(i => i.id == d).FirstOrDefaultAsync();
+        }
+        public Task<Lavado> ObtenerL(int d)
+        {
+            return db.Table<Lavado>().Where(i => i.id == d).FirstOrDefaultAsync();
+        }
+
+
+
+        public Task<int> Insertar(Cita cita)
         {
             return db.InsertAsync(cita);
+
         }
 
-        public Task<List<Models.Cita>> Listar()
+        public Task<int> Insertar(Lavado lavado)
         {
-            return db.Table<Models.Cita>().ToListAsync();
+            return db.InsertAsync(lavado);
+
         }
 
-        public Task<int> Modificar(Models.Cita cita)
+        public Task<int> Insertar(Cliente cliente)
+        {
+            return db.InsertAsync(cliente);
+
+        }
+        public Task<int> Insertar(Sucursal sucursal)
+        {
+            return db.InsertAsync(sucursal);
+
+        }
+        public Task<int> Insertar(Trabajador trabajador)
+        {
+            return db.InsertAsync(trabajador);
+
+        }
+
+
+        public Task<List<Cita>> ListarCita(string cedCli)
+        {
+            return db.Table<Cita>().Where(i => i.cedulaCliente == cedCli).ToListAsync();
+        }
+
+        public Task<List<Trabajador>> ListarT()
+        {
+            return db.Table<Trabajador>().ToListAsync();
+        }
+
+        public Task<List<Sucursal>> ListarS()
+        {
+            return db.Table<Sucursal>().ToListAsync();
+        }
+
+        public Task<List<Cliente>> ListarC()
+        {
+            return db.Table<Cliente>().ToListAsync();
+        }
+
+
+        public Task<int> Modificar(Cita cita)
         {
             return db.UpdateAsync(cita);
         }
-
-        public Task<int> Eliminar(Models.Cita cita)
+        public Task<int> Modificar(Cliente cl)
         {
-            return db.DeleteAsync(cita);
+            return db.UpdateAsync(cl);
+        }
+        public Task<int> Modificar(Sucursal suc)
+        {
+            return db.UpdateAsync(suc);
+        }
+        public Task<int> Modificar(Trabajador trab)
+        {
+            return db.UpdateAsync(trab);
+        }
+
+        public Task<int> DeleteAllItems<T>()
+        {
+            return db.DeleteAllAsync<T>();
         }
 
     }

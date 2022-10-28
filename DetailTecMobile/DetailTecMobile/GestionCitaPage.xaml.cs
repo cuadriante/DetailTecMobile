@@ -23,7 +23,7 @@ namespace DetailTecMobile
         {
             currentUser = user;
             InitializeComponent();
-
+            /*
             citas = new ObservableCollection<Models.Cita>
              {
              new Models.Cita{placaVehiculo = "JAM-123", tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
@@ -34,7 +34,7 @@ namespace DetailTecMobile
              };
 
             citaCollectionView.ItemsSource = citas;
-
+            */
            // InsertarCita();
 
             
@@ -85,7 +85,7 @@ namespace DetailTecMobile
         }
 
         async void InsertarCita()
-        {
+        {   /*
             await App.Database.Insertar(new Models.Cita
             {
                 id = "1",
@@ -97,6 +97,7 @@ namespace DetailTecMobile
                 hora = DateTime.Now,
                 medioPago = "dolares"
             });
+            */
         }
         }
 }
