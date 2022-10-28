@@ -15,6 +15,7 @@ namespace DetailTecMobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
    
+    // Descripción: Visualización de datos del usuario cliente actual y posible modificación. 
     public partial class GestionClientePage : ContentPage
     {
 
@@ -32,6 +33,7 @@ namespace DetailTecMobile
         List<string> direcciones;
         string contrasena;
 
+        // Inicialización de la página y obtención de los datos a partir de la base de datos. 
         public GestionClientePage(string user)
         {
             InitializeComponent();
@@ -91,11 +93,13 @@ namespace DetailTecMobile
 
 
 
+        // Descripción: Regresa a la página anterior
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MenuPage(currentUser));
         }
 
+        // Descripción: Pop up con el detalle del dato seleccionado y posibilidad de modificación
         async void clienteCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

@@ -11,6 +11,8 @@ using static System.Net.Mime.MediaTypeNames;
 namespace DetailTecMobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    // Descripción: Menu princial para la posibilidad de elección de diversas funnciones de la aplicación
     public partial class MenuPage : ContentPage
     {
 
@@ -28,6 +30,8 @@ namespace DetailTecMobile
 
         string currentUser;
 
+
+        // Descripción: Visualización de página de menu con botones que llevan a diferentes funcionalidades 
 
         public MenuPage(string user)
         {
