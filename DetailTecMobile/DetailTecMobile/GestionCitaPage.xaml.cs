@@ -23,19 +23,10 @@ namespace DetailTecMobile
         {
             currentUser = user;
             InitializeComponent();
-            /*
-            citas = new ObservableCollection<Models.Cita>
-             {
-             new Models.Cita{placaVehiculo = "JAM-123", tipoLavado = 1, hora = DateTime.Now, medioPago = "Tarjeta", estado = "Finalizada"},
-             new Models.Cita {placaVehiculo = "ADR-555", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "Efectivo", estado = "Pendiente" },
-             new Models.Cita{placaVehiculo = "UWU-123", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "Puntos", estado = "Finalizada"},
-            new Models.Cita{placaVehiculo = "76456745", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "Tarjeta", estado = "Finalizada" },
 
-             };
 
-            citaCollectionView.ItemsSource = citas;
-            */
-           // InsertarCita();
+            
+
 
             
  
@@ -45,8 +36,8 @@ namespace DetailTecMobile
         {
             try
             {
-                //base.OnAppearing();
-                //citaCollectionView.ItemsSource = await App.Database.Listar();
+                base.OnAppearing();
+                citaCollectionView.ItemsSource = await App.Database.ListarCita(currentUser);
             }
             catch 
             {

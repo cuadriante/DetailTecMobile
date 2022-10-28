@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DetailTecMobile.Services;
+using DetailTecMobile.Models;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -30,8 +32,9 @@ namespace DetailTecMobile
             currentUser = user; 
             InitializeComponent();
 
-            numeroPuntosActuales = "1250";
-            numeroPuntosUtilizados = "430";
+            Console.WriteLine(user);
+
+            
 
             puntosTitleLabel = new Label()
             {
@@ -98,7 +101,10 @@ namespace DetailTecMobile
             layout.Children.Add(backButton);
             Content = layout;
 
+            
+
         }
+
 
         private async void BackButton_Clicked(object sender, EventArgs e)
         {

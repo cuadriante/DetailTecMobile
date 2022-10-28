@@ -152,7 +152,6 @@ namespace DetailTecMobile
                     await App.Database.Insertar(cliente);
                     
                 }
-                var clienteForName = await App.Database.ObtenerC(result.ClientID);
 
 
                 var requestT = new HttpRequestMessage();
@@ -285,8 +284,8 @@ namespace DetailTecMobile
                             tipoLavado = response3.appointments[i].tipoLavado,
                             fecha = response3.appointments[i].fecha,
                             hora = response3.appointments[i].hora.ToString(),
-                            medioPago = response3.appointments[i].medioPago,
-                            generada = 0
+                            medioPago = response3.appointments[i].medioPago
+                            //generada = 0
                             //idEmpleados = response3.appointments[i].idEmpleados
 
 
@@ -298,7 +297,7 @@ namespace DetailTecMobile
                 }
 
 
-                await Navigation.PushAsync(new MenuPage(clienteForName.nombre));
+                await Navigation.PushAsync(new MenuPage(result.ClientID));
 
             }
             else

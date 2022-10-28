@@ -53,8 +53,8 @@ namespace DetailTecMobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            //MainPage = new NavigationPage(new GreetPage());
-            MainPage = new NavigationPage(new MenuPage("Adri"));
+            MainPage = new NavigationPage(new GreetPage());
+            //MainPage = new NavigationPage(new MenuPage("Adri"));
         }
 
         protected override void OnStart()

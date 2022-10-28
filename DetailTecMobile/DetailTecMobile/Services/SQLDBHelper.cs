@@ -21,23 +21,23 @@ namespace DetailTecMobile.Services
             db.CreateTableAsync<Cita>();
         }
 
-        public Task<Models.Cita> ObtenerCita(int d)
+        public  Task<Models.Cita> ObtenerCita(int d)
         {
-            return db.Table<Cita>().Where(i => i.id == d).FirstOrDefaultAsync();
+            return  db.Table<Cita>().Where(i => i.id == d).FirstOrDefaultAsync();
         }
-        public Task<Cliente> ObtenerC(string d)
+        public  Task<Cliente> ObtenerC(string d)
         {
-            return db.Table<Cliente>().Where(i => i.id == d).FirstOrDefaultAsync();
+            return  db.Table<Cliente>().Where(i => i.id == d).FirstOrDefaultAsync();
         }
-        public Task<Sucursal> ObtenerS(int d)
+        public  Task<Sucursal> ObtenerS(int d)
         {
-            return db.Table<Sucursal>().Where(i => i.id == d).FirstOrDefaultAsync();
+            return  db.Table<Sucursal>().Where(i => i.id == d).FirstOrDefaultAsync();
         }
-        public Task<Trabajador> ObtenerT(string d)
+        public  Task<Trabajador> ObtenerT(string d)
         {
-            return db.Table<Trabajador>().Where(i => i.id == d).FirstOrDefaultAsync();
+            return  db.Table<Trabajador>().Where(i => i.id == d).FirstOrDefaultAsync();
         }
-        public Task<Lavado> ObtenerL(int d)
+        public  Task<Lavado> ObtenerL(int d)
         {
             return db.Table<Lavado>().Where(i => i.id == d).FirstOrDefaultAsync();
         }
@@ -73,24 +73,24 @@ namespace DetailTecMobile.Services
         }
 
 
-        public Task<List<Cita>> ListarCita(string cedCli)
+        public  Task<List<Cita>> ListarCita(string cedCli)
         {
-            return db.Table<Cita>().Where(i => i.cedulaCliente == cedCli).ToListAsync();
+            return  db.Table<Cita>().Where(i => i.cedulaCliente == cedCli).ToListAsync();
         }
 
-        public Task<List<Trabajador>> ListarT()
+        public  Task<List<Trabajador>> ListarT()
         {
-            return db.Table<Trabajador>().ToListAsync();
+            return  db.Table<Trabajador>().ToListAsync();
         }
 
-        public Task<List<Sucursal>> ListarS()
+        public  Task<List<Sucursal>> ListarS()
         {
-            return db.Table<Sucursal>().ToListAsync();
+            return  db.Table<Sucursal>().ToListAsync();
         }
 
-        public Task<List<Cliente>> ListarC()
+        public  Task<List<Cliente>> ListarC()
         {
-            return db.Table<Cliente>().ToListAsync();
+            return  db.Table<Cliente>().ToListAsync();
         }
 
 

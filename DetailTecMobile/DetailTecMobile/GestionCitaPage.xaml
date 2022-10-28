@@ -25,18 +25,32 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="1"
-                                   Text="{Binding placaVehiculo}"
+                                   Text="{Binding id}"
                                    FontAttributes="Bold"
                                    FontSize="18"/>
                             
                             <Label Grid.Column="2"
-                                   Text= "{Binding hora}"
+                                   Text= "{Binding cedulaCliente}"
                                    FontAttributes="Bold"/>
                             <Label Grid.Column="3"
-                                   Text="{Binding medioPago}"
+                                   Text="{Binding placaVehiculo}"
                                    FontAttributes="Italic"/>
                             <Label Grid.Column="4"
-                                   Text= "{Binding estado}"
+                                   Text= "{Binding IDSucursal}"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Column="5"
+                                   Text="{Binding tipoLavado}"
+                                   FontAttributes="Bold"
+                                   FontSize="18"/>
+
+                            <Label Grid.Column="6"
+                                   Text= "{Binding fecha}"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Column="7"
+                                   Text="{Binding hora}"
+                                   FontAttributes="Italic"/>
+                            <Label Grid.Column="8"
+                                   Text= "{Binding medioPago}"
                                    FontAttributes="Bold"/>
 
                         </Grid>

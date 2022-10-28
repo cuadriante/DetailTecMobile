@@ -21,7 +21,7 @@ namespace DetailTecMobile.Models
 
         public string medioPago { get; set; }
 
-        public int generada { get; set; }
+        //public int generada { get; set; }
 
         //public List<string> idEmpleados { get; set; }
     }
