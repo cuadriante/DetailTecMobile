@@ -120,8 +120,9 @@ namespace DetailTecMobile
             }
             else
             {
-                await DisplayAlert("Log In Unsuccessful", "User or password incorrect.", "OK");
-            }
+                await DisplayAlert("AVISO", "Usuario o contraseña incorrecta.", "OK");
+                
+            };
                 
         }
     }

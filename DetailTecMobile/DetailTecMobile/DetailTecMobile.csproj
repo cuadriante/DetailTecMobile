@@ -22,10 +22,14 @@
 
   <ItemGroup>
     <Compile Remove="InsertarClientePage.xaml.cs" />
+    <Compile Remove="ModificarCita.xaml.cs" />
+    <Compile Remove="Page1.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="InsertarClientePage.xaml" />
+    <EmbeddedResource Remove="ModificarCita.xaml" />
+    <EmbeddedResource Remove="Page1.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +60,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MisPuntosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ModificarCitaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PasswordEntryPage.xaml">

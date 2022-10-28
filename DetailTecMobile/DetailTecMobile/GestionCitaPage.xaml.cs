@@ -72,7 +72,7 @@ namespace DetailTecMobile
 
         private async void AgendarButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage(currentUser));
+            await Navigation.PushAsync(new ModificarCitaPage(currentUser));
         }
 
         private void citaCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)

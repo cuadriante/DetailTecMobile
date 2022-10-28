@@ -104,7 +104,7 @@ namespace DetailTecMobile
 
         private async void ConfirmPasswordButton_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("AVISO.", $"Cambio de {currentParametro} exitoso.", "OK");
+            await DisplayAlert("AVISO", $"Cambio de {currentParametro} exitoso.", "OK");
             await Navigation.PushAsync(new GestionClientePage(currentUser));
         }
     }
