@@ -46,12 +46,25 @@ namespace DetailTecMobile
 
             backButton = new Button
             {
+                WidthRequest = 100,
+                HeightRequest = 50,
+                BackgroundColor = Color.DeepPink,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Atras",
 
             };
             backButton.Clicked += BackButton_Clicked;
+
+            
+           passwordEntry = new Entry()
+            {
+                //  HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Placeholder = $"Nuevo/a {currentParametro}",
+                MaxLength = 20,
+                ClearButtonVisibility = ClearButtonVisibility.WhileEditing
+            };
 
             if (currentParametro == "Contraseña")
             {
@@ -66,21 +79,14 @@ namespace DetailTecMobile
                 };
 
                 layout.Children.Add(oldPasswordEntry);
+                passwordEntry.IsPassword = true;
             }
-
-           passwordEntry = new Entry()
-            {
-                //  HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Placeholder = $"Nuevo/a {currentParametro}",
-                IsPassword = true,
-                MaxLength = 20,
-                ClearButtonVisibility = ClearButtonVisibility.WhileEditing
-            };
 
 
             confirmPasswordButton = new Button
             {
+                HeightRequest = 50,
+                WidthRequest = 100,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Guardar",
@@ -88,9 +94,9 @@ namespace DetailTecMobile
             };
             confirmPasswordButton.Clicked += ConfirmPasswordButton_Clicked;
 
-            
 
-            
+
+            layout.BackgroundColor = Color.Azure;
             layout.Children.Add(passwordEntry);
             layout.Children.Add(confirmPasswordButton);
             layout.Children.Add(backButton);
@@ -99,13 +105,21 @@ namespace DetailTecMobile
 
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
+
             await Navigation.PushAsync(new GestionClientePage(currentUser));
         }
 
         private async void ConfirmPasswordButton_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("AVISO.", $"Cambio de {currentParametro} exitoso.", "OK");
-            await Navigation.PushAsync(new GestionClientePage(currentUser));
-        }
+            if (passwordEntry.Text != null)
+            {
+                await DisplayAlert("AVISO", $"Cambio de {currentParametro} exitoso.", "OK");
+                await Navigation.PushAsync(new GestionClientePage(currentUser));
+            } else
+            {
+                await DisplayAlert("ERROR", $"Cambio fallido, {currentParametro} no puede ser nulo.", "OK");
+            }
+                
+        }   
     }
 }

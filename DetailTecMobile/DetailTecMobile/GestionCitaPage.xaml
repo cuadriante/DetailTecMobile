@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DetailTecMobile.GestionCitaPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="Azure">
             <Label
                 HorizontalOptions="Center"
                 VerticalOptions = "CenterAndExpand"
@@ -11,7 +11,8 @@
                 FontSize ="48"/>
             <CollectionView x:Name="citaCollectionView"
                             SelectionMode="Single"
-                            SelectionChanged="citaCollectionView_SelectionChanged">
+                            SelectionChanged="citaCollectionView_SelectionChanged"
+                            >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10">
@@ -32,10 +33,10 @@
                                    Text= "{Binding hora}"
                                    FontAttributes="Bold"/>
                             <Label Grid.Column="3"
-                                   Text="{Binding tipoLavado}"
+                                   Text="{Binding medioPago}"
                                    FontAttributes="Italic"/>
                             <Label Grid.Column="4"
-                                   Text= "{Binding medioPago}"
+                                   Text= "{Binding estado}"
                                    FontAttributes="Bold"/>
 
                         </Grid>
@@ -43,15 +44,20 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Button 
+                HeightRequest = "50"
+                WidthRequest = "100"
                 HorizontalOptions="Center"
                 VerticalOptions = "CenterAndExpand"
                 Text = "Agendar"
                 Clicked="AgendarButton_Clicked"
                 />
             <Button 
+                HeightRequest = "50"
+                WidthRequest = "100"
                 HorizontalOptions="Center"
                 VerticalOptions = "CenterAndExpand"
                 Text = "Atras"
+                BackgroundColor="DeepPink"
                 Clicked="BackButton_Clicked"
                 />
         </StackLayout>

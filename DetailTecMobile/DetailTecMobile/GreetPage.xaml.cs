@@ -41,6 +41,8 @@ namespace DetailTecMobile
         {
             InitializeComponent();
 
+            var image = new Image { Source = "detailtec.png" };
+           
             titleLabel = new Label()
             {
                 HorizontalOptions = LayoutOptions.Center,
@@ -72,14 +74,18 @@ namespace DetailTecMobile
 
             logInButton = new Button
             {
+                HeightRequest = 50,
+                WidthRequest = 150,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Iniciar Sesión",
             
             };
             logInButton.Clicked += LogInButton_Clicked;
-            
-            layout.Children.Add(titleLabel);    
+
+            layout.BackgroundColor = Color.Azure;
+            layout.Children.Add(image);
+            //layout.Children.Add(titleLabel);    
             layout.Children.Add(userEntry);
             layout.Children.Add(passwordEntry);
             layout.Children.Add(logInButton);
@@ -297,8 +303,9 @@ namespace DetailTecMobile
             }
             else
             {
-                await DisplayAlert("Log In Unsuccessful", "User or password incorrect.", "OK");
-            }
+                await DisplayAlert("AVISO", "Usuario o contraseña incorrecta.", "OK");
+                
+            };
                 
         }
     }

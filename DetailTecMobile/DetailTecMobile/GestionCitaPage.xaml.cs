@@ -26,10 +26,10 @@ namespace DetailTecMobile
             /*
             citas = new ObservableCollection<Models.Cita>
              {
-             new Models.Cita{placaVehiculo = "JAM-123", tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
-             new Models.Cita {placaVehiculo = "ADR-555", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
-             new Models.Cita{placaVehiculo = "UWU-123", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares"},
-            new Models.Cita{placaVehiculo = "76456745", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "dolares" },
+             new Models.Cita{placaVehiculo = "JAM-123", tipoLavado = 1, hora = DateTime.Now, medioPago = "Tarjeta", estado = "Finalizada"},
+             new Models.Cita {placaVehiculo = "ADR-555", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "Efectivo", estado = "Pendiente" },
+             new Models.Cita{placaVehiculo = "UWU-123", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "Puntos", estado = "Finalizada"},
+            new Models.Cita{placaVehiculo = "76456745", IDSucursal = 1, tipoLavado = 1, hora = DateTime.Now, medioPago = "Tarjeta", estado = "Finalizada" },
 
              };
 
@@ -72,16 +72,25 @@ namespace DetailTecMobile
 
         private async void AgendarButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage(currentUser));
+            await Navigation.PushAsync(new ModificarCitaPage(currentUser, null));
         }
 
-        private void citaCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void citaCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var itemSelected = e.CurrentSelection[0] as Models.Cita;
             if (itemSelected != null)
-                DisplayAlert("DETALLES DE CITA", $" Vehiculo: {itemSelected.placaVehiculo} \n" +
+            {
+                bool mod = await DisplayAlert("DETALLES DE CITA", $" Vehiculo: {itemSelected.placaVehiculo} \n" +
                     $" Fecha: {itemSelected.hora} \n Tipo Lavado {itemSelected.tipoLavado} \n Medio de Pago: {itemSelected.medioPago} \n " +
                     $"Sucursal: {itemSelected.IDSucursal}", "Modificar", "Ok");
+                if (mod)
+                {
+                    await Navigation.PushAsync(new ModificarCitaPage(currentUser, itemSelected));
+                }
+
+            }
+              
+
         }
 
         async void InsertarCita()

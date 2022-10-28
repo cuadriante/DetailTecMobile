@@ -22,5 +22,7 @@ namespace DetailTecMobile.Models
         public int total { get; set; }
         public int utilizados { get; set; }
         public int actuales { get; set; }
+
+        
     }
 }

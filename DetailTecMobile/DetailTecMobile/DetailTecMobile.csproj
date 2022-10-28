@@ -10,22 +10,29 @@
     <Compile Remove="NewFolder2\**" />
     <Compile Remove="NewFolder3\**" />
     <Compile Remove="NewFolder4\**" />
+    <Compile Remove="Resources\**" />
     <EmbeddedResource Remove="Models - Copy\**" />
     <EmbeddedResource Remove="NewFolder2\**" />
     <EmbeddedResource Remove="NewFolder3\**" />
     <EmbeddedResource Remove="NewFolder4\**" />
+    <EmbeddedResource Remove="Resources\**" />
     <None Remove="Models - Copy\**" />
     <None Remove="NewFolder2\**" />
     <None Remove="NewFolder3\**" />
     <None Remove="NewFolder4\**" />
+    <None Remove="Resources\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="InsertarClientePage.xaml.cs" />
+    <Compile Remove="ModificarCita.xaml.cs" />
+    <Compile Remove="Page1.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="InsertarClientePage.xaml" />
+    <EmbeddedResource Remove="ModificarCita.xaml" />
+    <EmbeddedResource Remove="Page1.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +63,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MisPuntosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ModificarCitaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PasswordEntryPage.xaml">
