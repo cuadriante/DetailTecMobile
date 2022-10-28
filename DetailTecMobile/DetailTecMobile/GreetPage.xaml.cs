@@ -109,28 +109,19 @@ namespace DetailTecMobile
             var response = await client.PostAsync(requestUri, contentJson);
 
 
-            bool valid = true; //bindear con base de datos 
+            bool valid = false; //bindear con base de datos 
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                var data = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine(data);
-                valid = true;
+                string data = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<ResponseLogin>(data);
+
+                await Navigation.PushAsync(new MenuPage(result.ClientID));
             }
             else
             {
-
-                valid = false;
-            }
-
-            
-            if (valid)
-            {
-                await Navigation.PushAsync(new MenuPage(user));
-            } else
-            {
                 await DisplayAlert("Log In Unsuccessful", "User or password incorrect.", "OK");
-            };
+            }
                 
         }
     }
