@@ -42,6 +42,7 @@ namespace DetailTecMobile
             {
                 base.OnAppearing();
                 citaCollectionView.ItemsSource = await App.Database.ListarCita(currentUser);
+                
             }
             catch 
             {
